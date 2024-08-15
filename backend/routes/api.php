@@ -25,7 +25,7 @@ use App\Http\Controllers\Auth\RegisterController;
 
 
 Route::post('/register', [RegisterController::class, 'register']);
-Route::get('/login', [LoginController::class, 'login']);
+Route::post('/login', [LoginController::class, 'login']);
 
 // 
 Route::middleware('auth:sanctum')->group(function () {
@@ -38,7 +38,3 @@ Route::middleware('auth:sanctum')->group(function () {
 Route::get('auth/{provider}/redirect', [OauthController::class, 'redirectToProvider']);
 Route::get('auth/{provider}/callback', [OauthController::class, 'handleProviderCallback']);
 
-
-
-// Route::get('/oauth/{provider}/redirect', [OauthController::class, 'redirectToProvider']);
-// Route::get('/oauth/{provider}/callback', [OauthController::class, 'handleProviderCallback']);

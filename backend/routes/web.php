@@ -19,8 +19,8 @@ Route::get('/', function () {
 });
 
 
-// Route::get('auth/{provider}/redirect', [OauthController::class, 'redirectToProvider']);
-// Route::get('auth/{provider}/callback', [OauthController::class, 'handleProviderCallback']);
+Route::get('auth/{provider}/redirect', [OauthController::class, 'redirectToProvider']);
+Route::get('auth/{provider}/callback', [OauthController::class, 'handleProviderCallback']);
 
 
 Route::group(['prefix' => 'admin'], function () {

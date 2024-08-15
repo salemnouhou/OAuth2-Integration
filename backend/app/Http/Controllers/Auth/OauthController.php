@@ -31,10 +31,14 @@ class OauthController extends Controller
                 $user = User::findOrFail($user_id);
                 
                 $token = $user->createToken('auth_token')->plainTextToken;
-                return response()->json([
+                // return response()->json([
                     
-                    'success' => true,
-                    'user logged with oauth 2 token and token is ' => $token], 200);
+                //     'success' => true,
+                    
+                //     'token ' => $token], 200);
+                $method = "login";
+
+                    return redirect()->intended('http://localhost:5173/profile/'.$token.'/'.$method);
             } else {
                 $user = User::where('email', $oauthUser->getEmail())->first();
 
@@ -55,10 +59,15 @@ class OauthController extends Controller
 
             $token = $user->createToken('auth_token')->plainTextToken;
 
-            return response()->json([
+
+            $method = "register";
+            return redirect()->intended('http://localhost:5173/profile/'.$token.'/'.$method);
+
+            // return response()->json([
                 
-                'success' => true,
-                'user registered with OAUTH2' => $token], 200);
+            //     'success' => true,
+            //     'auth' => $provider,
+            //     'token' => $token], 200);
 
         } catch (\Exception $e) {
             return response()->json([
